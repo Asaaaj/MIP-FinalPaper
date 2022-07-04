@@ -1,0 +1,135 @@
+\documentclass[12pt,slovak,a4paper, twocolumn]{article}
+
+\usepackage[slovak]{babel}
+\usepackage[IL2]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{url}
+\usepackage[hidelinks]{hyperref}
+\usepackage{cite}
+
+\title{Návrh dosiek plošných spojov v Autodesk EAGLE\thanks{Semestrálny projekt v predmete Metódy inžinierskej práce, ak. rok 2021/22, vedenie: Mgr. Martin Sabo, PhD.}}
+
+\author{Adam Jurčišin\\[2pt]
+	{\small Slovenská technická univerzita v Bratislave}\\
+	{\small Fakulta informatiky a informačných technológií}\\
+	{\small \texttt{xjurcisin@stuba.sk}}
+	}
+
+\date{\small 14. december 2021} 
+
+
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+\textit{\textbf{V mojom článku sa chcem zamerať na tvorbu dosiek plošných spojov. Dosky plošných spojov môžeme nájsť všade okolo nás, keďže sa nachádzajú v každom elektronickom zariadení ktoré používame. Tieto dosky si môžeme rozdeliť na flexibilne a pevné. Ja sa budem zameriavať hlavne na pevné, no spomenieme si a vysvetlíme aj tie flexibilne. Na návrh takýchto dosiek som si vybral program, ktorý som za takýmto účelom spoznal na strednej škole. Jedná sa o program Eagle od spoločnosti Autodesk. Pozrieme sa na priebeh od prvotného nápadu na tvorbu dosky plošných spojov, vytvorenie schémy až na následne rozloženie schémy na dosku a prípravy na výrobu.}}
+\end{abstract}
+
+
+
+\section{Úvod}
+\paragraph{} Dosky plošných spojov sú najdôležitejšia časť každého elektronického zariadenia. Vďaka nim implementujeme schematické zapojenie do fyzickej podoby, ktoré následne využívame v našich elektronických zariadeniach. Ich vytvorenie sa dá realizovať viacerými spôsobmi. Príchodom moderných technológii  a počítačovej doby nám vzniklo mnoho softvérov, ktoré nám uľahčujú prácu pri takomto tvorení. V tomto článku si najprv v časti~\ref{dps} vysvetlíme aké existujú druhy a aké sa používajú materiály na vytvorenie dosiek plošných spojov. V časti~\ref{softvery} sa pozrieme na softvéry, ktoré nám môžu pomôcť pri vytváraní. V najdôležitejšej časti článku, časti~\ref{eagle} si pomocou softvéru EAGLE od spoločnosti Autodesk postupne vytvoríme takúto dosku plošných spojov. Záverečné zhrnutie poznatkov je k nájdeniu v časti~\ref{zaver}.
+
+
+\section{Dosky plošných spojov} \label{dps}
+
+\paragraph{} Príchod počítačovej doby bol jedným z hlavných hnacích faktorov, ktorý ovplyvnil rýchlosť vývinu dosiek plošných spojov. Najmodernejšie technológie a techniky boli schválene na použitie čo najrýchlejšie od predstavenia. Termínom „doska plošných spojov“ v skratke DPS sa označuje nosič elektrických prepojení umiestnených na izolačnej podložke, ktorý po osadení elektronickými súčiastkami tvorí funkčný elektronický obvod a je jedným z funkčných mechanických dielov elektrického zariadenia. V počítačovom priemysle bolo potrebné vyrobiť dosky plošných spojov veľkej komplexnosti a hustoty elektronických komponentov na nich umiestených\cite{Harvel}\cite{tukedps}.
+
+\subsection{Druhy dosiek plošných spojov}
+\paragraph{} Dosky plošných spojov si vieme rozdeliť podľa nasledujúceho diagramu: 
+\begin{figure}[htbp]
+\centerline{\includegraphics [width = 7cm]{dps_diagram.png}}
+\caption{Diagram rozdelenia DPS}
+\end{figure}
+
+\subsubsection{Pevné dosky plošných spojov}
+
+\paragraph{} Pevné dosky plošných spojov sa vyrábajú z pevného laminátu, ktorý zabraňuje ich ohýbaniu. Tento typ dosiek sa používa najčastejšie. Používajú sa tam, kde nechceme dosiahnuť ohýbanie a zároveň sú odolnejšie voči rôznym otrasom, rôzneho nevhodného zaobchádzania a podobne. Tým sa zvyšuje životnosť elektronických zariadení v ktorých sú použité\cite{tukedps}. 
+\paragraph{Jednostranné dosky plošných spojov} ktoré sú používané najčastejšie pri jednoduchých elektronických obvodoch sú tvorené z jednej vrstvy substrátu na ktorej sa len z jednej strany nachádza vodivá vrstva z medi, následné je na obe strany aplikovaná spájkovacia maska, ktorá má ochrannú funkciu. 
+\paragraph{Obojstranné dosky plošných spojov} môžeme nájsť vo viacerých komplexnejších elektronických zariadeniach. Rozdielom oproti jednostrannej doske plošných spojov je nanesenie medenej vrstvy na obe strany.  
+\paragraph{Viacvrstvové dosky plošných spojov} majú viacero vrstiev. Sú používané v pokročilých elektronických zariadeniach. Skladajú sa z viacerých vodivých vrstiev na báze obojstranných dosiek plošných spojov a izolačných laminovacích listov uložených nad sebou. V dnešnej dobe majú takéto dosky plošných spojov 4 až 6 vnútorných vrstiev. Sú náročné na výrobu a majú pomerne vysoké percento poruchovosti výrobkov\cite{tukedps}.
+
+\subsubsection{Flexibilné dosky plošných spojov}
+
+\paragraph{} Tieto dosky sú ako už napovedá názov, flexibilné a môžu sa voľne ohýbať. Takéto dosky plošných spojov ponúkajú veľké množstvo výhod, ktoré nám tie pevné poskytnúť nedokážu. Môžeme ich ohýbať, majú menšiu váhu a dajú sa používať v nedostatočne veľkom, stiesnenom priestore, ako sú napríklad mobilné telefóny. Ich výroba spočíva v použití odlišných materiálov, ohybných fólií. Základný materiál je fólia s maximálnou hrúbkou 250 {\textmu}m, na ktorý sa ako na izolačnú nosnú vrstvu lepiacim lakom viaže medená fólia. Avšak takáto výroba je zložitejšia a výsledná doska plošných spojov môže byť menej spoľahlivá\cite{tukedps}.
+
+\section{Softvéry na tvorbu DPS} \label{softvery}
+
+\paragraph{} Ako sme si spomenuli v časti~\ref{dps}, rýchlosť ktorou sa počítačová doba hnala ku predu zabezpečil obrovský pokrok pri vývine dosiek plošných spojov. Nakoľko vytvorenie a navrhovanie takýchto DPS sa začalo prejavovať ako náročná úloha, vznikli nám rôzne softvéry konceptu EDA. EDA, plným názvom Electronic Desing Automation a teda v preklade Elektronická Automatizácia Návrhu je koncept softvérov na navrhovanie elektronických zariadení, integrovaných obvodov, dosiek plošných spojov a podobne\cite{EDA}. \newline 
+\par Na využívanie EDA softvérov môžeme naraziť v rôznych oblastiach vedy a techniky. Stretneme sa s nimi napríklad v strojárskych, elektrotechnických, chemických a armádnych oblastiach\cite{EDA}. \newline 
+\par V dnešnej dobe už existuje EDA softvérov mnoho, všetky plnia takmer totožné úlohy a rozdielov je minimálne množstvo. A tak sa používateľ môže rozhodnúť v ktorom sa mu pracuje najlepšie, ktorý poskytuje práve tie funkcie, ktoré potrebuje, ktorý je pre neho najlepšie cenovo dostupný a môže si teda vybrať ten, ktorý mu bude čo najviac vyhovovať. Veľké množstvo týchto softvérov je spoplatnených no môžeme nájsť aj softvéry, ktorých používanie je zadarmo. Niektoré spoločnosti zaoberajúce sa vývojom EDA softvérov taktiež ponúkajú študentské verzie bezplatne. V tabuľke 1 môžeme vidieť konkrétne EDA softvéry a ich cenovú dostupnosť. 
+
+\begin{table}[!ht]
+\resizebox{\linewidth}{!}{%
+    \begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+    \hline
+        Názov & Spoločnosť & Cena pre študenta \\ \hline
+        EAGLE & Autodesk & Zadarmo \\ \hline
+        KiCad & Open Source & Zadarmo   \\ \hline
+        EasyEDA & EasyEDA & Zadarmo  \\ \hline
+        Altium Designer & Altium & 295\texteuro / mesiac   \\ \hline
+        OrCAD & Cadence Design Systems & Zadarmo   \\ \hline
+        Proteus & Labcenter Electronics Ltd & 200\texteuro  \\ \hline
+        CircuitMaker & Altium & Zadarmo   \\ \hline
+        DesignSpark PCB & RS Components & Zadarmo   \\ \hline
+        gEDA & gEDA Project & Zadarmo   \\ \hline
+    \end{tabular}}
+    \caption{Ceny EDA softvérov pre študentov.}
+\end{table}
+
+\section{Autodesk EAGLE} \label{eagle}
+
+\paragraph{} Jedným z EDA softvérov je aj softvér EAGLE, prvotne vydaný v roku 1988 a vyvíjaný spoločnosťou CadSoft Computer GmbH. Táto spoločnosť sa v roku 2016 stala dcérskou spoločnosťou spoločnosti Autodesk a od tejto chvíle softvér EAGLE spadá medzi produkty spoločnosti Autodesk.\newline
+\par Pre vytvorenie dosky plošných spojov v tomto softvéry musíme prejsť prvou fázou vytvorenia schémy zapojenia a následne v druhej fázy preniesť schému zapojenie a vytvoriť samotný model DPS, ktorý bude pripravený na výrobu \cite{university}.
+
+\subsection{Vytvorenie schémy zapojenia} \label{schema}
+
+\paragraph{} Prvá fáza vytvorenia dosky plošných spojov je fáza vytvorenia schémy zapojenia. Pre vytvorenie schémy zapojenia nám EAGLE vytvorí súbor Schematics, do ktorej sa naša schéma zapojenia uloží \cite{guide}.\newline
+\par Na obrázku 2 môžeme vidieť používateľské rozhranie pre tvorbu schémy zapojenia.
+\begin{figure}[htbp]
+\centerline{\includegraphics [width = 8cm]{Schematic.png}}
+\caption{Použivateľské rozhranie pre tvorbu schémy zapojenia}
+\end{figure}\newline
+
+\par Na vytvorenie schémy zapojenia nám z panelu nástrojov umiestneného štandardne na ľavej strane obrazovky poslúžia predovšetkým dve funkcie na vloženie rôznych elektronických súčiastok, konektorov a podobne a následne spojenie všetkých súčiastok.\newline
+\par Prvou funkciou je funkcia Add Part \includegraphics[scale=0.5]{AddPart.png} na vloženie súčiastok, po kliknutí narazíme na okno s množstvom knižníc, v ktorých hľadáme súčiastky, ktoré potrebujeme. Ak súčiastku, ktorú hľadáme nenájdeme v žiadnej knižnici súčiastok, môžeme skúsiť knižnicu s touto súčiastkou stiahnuť z internetu, prípadne si takúto knižnicu vytvoriť sami. \newline
+\par Pri výbere súčiastok sa musíme hlavne zamerať na rozmery ich puzdier, pretože práve to ovplyvní náš ďalší krok, ktorým je vytvorenie modelu DPS. Pri výbere nevhodných rozmerov puzdier môže na našej výslednej doske plošných spojov nastať problém nedostatočného priestoru pre osadenie elektronických súčiastok. Všetky vybrané súčiastky vhodne rozmiestnime. \newline
+\par Druhou potrebnou funkciou je funkcia Net \includegraphics[scale=0.5]{Net.png} pomocou ktorej všetky rozmiestnené elektronické súčiastky spojíme do výslednej schémy zapojenia.\newline
+\par V rámci prehľadnosti našej schémy zapojenia ešte môžeme pomocou Name a Value \includegraphics[scale=0.5]{NameValue.png} nastaviť meno a hodnotu našich vložených súčiastok. \newline
+\par Po vytvorení schémy zapojenia a kliknutí na tlačidlo Generate/switch to board \includegraphics[scale=0.5]{SwitchToBoard.png} prejdeme na druhú fázu tvorby dosiek plošných spojov a to je samotné vytvorenie modelu.\newline
+
+\subsection{Vytvorenie modelu dosky plošných spojov} \label{board}
+
+\paragraph{} Druhá fáza vytvorenia dosky plošných spojov je fáza, v ktorej sa naša schéma zapojenia preklopí na vytvorenie modelu DPS. Pre vytvorenie modelu DPS nám EAGLE vytvorí súbor Boards, do ktorej sa náš model DPS uloží\cite{guide}.\newline 
+\par Na obrázku 3 môžeme vidieť používateľské  rozhranie pre tvorbu modelu dosky plošných spojov.
+\begin{figure}[htbp]
+\centerline{\includegraphics [width = 8cm]{Board.png}}
+\caption{Použivateľské rozhranie pre tvorbu modelu DPS}
+\end{figure}
+
+\par Naše schematické značky súčiastok použité v schéme zapojenia sa pri tomto vytváraní modelu zmenili za grafické bloky, ktoré zobrazujú veľkosti puzdier súčiastok, ktoré sme zvolili. Taktiež spojenia súčiastok sú podľa schémy zapojenia nahradené čiarami, ktoré nám ukazujú, ktoré vývody súčiastok nemáme spojené cestou.\newline
+\par Z panelu nástrojov si zvolíme funkcie Move \includegraphics[scale=0.5]{Move.png} a Rotate \includegraphics[scale=0.5]{Rotate.png} pomocou ktorých naše puzdra súčiastok čo najvhodnejšie rozložíme a otočíme do čierneho štvorca, ktorý nám softvér EAGLE poskytuje. Následne pomocou funkcie Route Airware \includegraphics[scale=0.5]{Router.png} spojíme vývody súčiastok a tým vytvoríme cestu, ktorá pri vytvorení dosky plošných spojov slúži na vodivé prepojenie súčiastok. \newline
+\par Proces posúvania, rotácie súčiastok a vytvárania ciest väčšinou opakujeme viackrát aby sme našli čo najoptimálnejšie rozloženie súčiastok, ktoré pri vysokej náročnosti schémy zapojenia môže byť veľmi náročné. Z tohto dôvodu softvér EAGLE poskytuje aj možnosť Autorouter \includegraphics[scale=0.5]{Autorouter.png}, ktorá nám má pomôcť pri vytváraní ciest a návrh ciest vytvorí automaticky. Taktiež pomocou funkcie Text \includegraphics[scale=0.5]{Text.png} môžeme na náš model DPS pridať ľubovoľný text.\newline
+\par Po dokončení vytvárania modelu DPS môžeme model vytvoriť viacerými spôsobmi, jedným zo zaujímavých spôsobov je použite CAM procesora, ktorý nám EAGLE poskytuje a tak vytvoriť dosku plošných spojov jednoducho pomocou CNC frézy\cite{eagle}. 
+
+\section{Reakcia na témy} \label{reakcia}
+\paragraph{Spoločenské súvislosti} 
+Týmto článkom obdržal každý čítateľ základne informácie ohľadom toho, čo sú to dosky plošných spojov, na aké druhy sa rozdeľujú a taktiež získal postup podľa ktorého si môže každý vytvoriť vlastnú dosku plošných spojov za použitia softvéru Autodesk EAGLE.
+\paragraph{Historické súvislosti} 
+Enormný posun počítačovej doby vpred zabezpečil, že vznikol koncept softvérov EDA, počas uplynulých rokov sa tieto softvéry postupne vylepšovali a pridávali sa nové funkcie na zjednušenie práce.
+\paragraph{Technológia a ľudia} 
+Pri tvorbe dosiek plošných spojov potrebujú ľudia neustále sledovať vývin nových technológii, ktorými sa dosky plošných spojov môžu vyrábať alebo sledovať nové verzie softvérov a ich nové funkcie na zjednodušenie ich práce.
+\paragraph{Udržateľnosť a etika}
+Tvorba dosiek plošných spojov je v dnešnej dobe v priemysle tvorená automatickými systémami. Tvorbu náročných modelov, podľa ktorých sa súčiastky rozmiestnia na dosky plošných spojov vykonávajú rôzne softvéry podobného konceptu.
+
+\section{Záver} \label{zaver}
+\paragraph{} Tento článok nás oboznámil s tvorbou dosiek plošných spojov. Zistili sme aké druhy DPS existujú, z čoho sa skladajú a ako príchod počítačovej doby ovplyvnil ich tvorbu. \newline
+\par Vysvetlili sme si koncept softvérov EDA, ktoré slúžia na tvorbu dosiek plošných spojov a porovnali ceny za ktoré môže študent univerzity tieto softvéry používať vďaka rôznym študentským licenciám, ak to ich spoločnosti ponúkajú. \newline
+\par Pozreli sme sa na jeden z EDA softvérov od spoločnosti Autodesk, ukázali sme si, ako vyzerá jeho používateľské rozhranie a z akých krokov sa skladá vytvorenie modelu DPS. V jednotlivých krokoch sme si ukázali hlavné nástroje, ktoré pre vytvorenie využijeme a taktiež sme si spomenuli ako môžeme postupovať ďalej po dokončení modelu dosky plošných spojov. 
+\bibliography{literatura}
+\bibliographystyle{unsrt}
+
+\end{document}
